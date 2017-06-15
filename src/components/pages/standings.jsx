@@ -1,5 +1,4 @@
 import React from 'react';
-import TopBar from '../topbar';
 
 export default class StandingsPage extends React.Component {
     constructor(props) {
@@ -16,7 +15,6 @@ export default class StandingsPage extends React.Component {
 
         return (
             <div>
-                <TopBar />
                 <div className={ "container" }>
                     <h3>{ league } Standings</h3>
                 </div>

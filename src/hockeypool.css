@@ -1,0 +1,11 @@
+div.sidebar div.card {
+    margin-bottom: .4em;
+}
+
+div.sidebar table {
+    margin-bottom: 0;
+}
+
+div.sidebar table tr td {
+    padding: .2rem;
+}

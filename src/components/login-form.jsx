@@ -2,9 +2,6 @@ import React from "react";
 import { Button, Col, Form, FormGroup, Input, Label } from 'reactstrap';
 import axios from "axios";
 
-axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
-axios.defaults.xsrfCookieName = "csrftoken";
-
 export default class LoginForm extends React.Component {
     static contextTypes = {
         router: React.PropTypes.func.isRequired
@@ -42,18 +39,15 @@ export default class LoginForm extends React.Component {
 
         axios({
             method: 'post',
-            url: '/api/login/',
+            url: '/api/api-token-auth/',
             data: data,
         }).then(response => {
-            if (response.data.error < 0) {
-                //Do something to display an error
-                console.log(response.data.msg);
-            } else {
-                this.context.router.history.push('/');
-            }
+            var bhpJwt = response.data.token;
+            localStorage.setItem("bhp-jwt", bhpJwt);
+            this.context.router.history.push('/');
         })
         .catch(error => {
-            console.log(error);
+            console.log(error.message);
         });
     }
 
